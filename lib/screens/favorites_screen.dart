@@ -12,6 +12,20 @@ class FavoriteScreen extends StatefulWidget {
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
   final PetService petService = PetService();
+  List<Pet> favoritePets = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadFavoritePets();
+  }
+
+  void _loadFavoritePets() {
+    setState(() {
+      // Carrega os pets favoritos filtrando pela propriedade 'favorite'
+      favoritePets = petService.getFavoritePets();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,29 +41,14 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               'My',
               style: TextStyle(color: Colors.blue[900], fontWeight: FontWeight.bold),
             ),
-            Image.asset(
-              'lib/assets/pata.png',
-              width: 20,
-              height: 20,
-              fit: BoxFit.contain,
-            ),
-            Text(
-              'Pets',
-              style: TextStyle(color: Colors.blue[900], fontWeight: FontWeight.bold),
-            ),
+            Image.asset('lib/assets/pata.png', width: 20, height: 20, fit: BoxFit.contain),
+            Text('Pets', style: TextStyle(color: Colors.blue[900], fontWeight: FontWeight.bold)),
             Padding(
               padding: const EdgeInsets.only(left: 90),
               child: Row(
                 children: [
-                  Icon(
-                    Icons.favorite,
-                    color: Colors.red,
-                    size: 25,
-                  ),
-                  Text(
-                    'Favoritos',
-                    style: TextStyle(color: const Color.fromARGB(255, 255, 0, 0), fontWeight: FontWeight.bold),
-                  ),
+                  Icon(Icons.favorite, color: Colors.red, size: 25),
+                  Text('Favoritos', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
                   SizedBox(width: 5),
                 ],
               ),
@@ -57,47 +56,49 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           ],
         ),
         actions: [
-          CircleAvatar(
-            backgroundImage: AssetImage('lib/assets/profile_pic.png'),
-          ),
+          CircleAvatar(backgroundImage: AssetImage('lib/assets/profile_pic.png')),
           SizedBox(width: 10),
         ],
       ),
       body: Column(
         children: [
-          Header(location: 'Embu das Artes'), // Usando o Header aqui
-          Expanded( // Usando Expanded para ocupar o espaço restante
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.75,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
+          Header(location: 'Embu das Artes', onAnimalTypeSelected: (_) {}), // Header aqui, sem filtro
+          favoritePets.isEmpty
+              ? Center(child: Text('Nenhum pet favorito encontrado')) // Exibe se não houver favoritos
+              : Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.75,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                      ),
+                      itemCount: favoritePets.length,
+                      itemBuilder: (context, index) {
+                        Pet pet = favoritePets[index];
+                        List<Color> imageBackgroundColors = [
+                          Color.fromARGB(255, 255, 193, 193),
+                          Color.fromARGB(255, 215, 244, 221),
+                          Color.fromARGB(255, 179, 229, 252),
+                          Color.fromARGB(255, 255, 243, 211),
+                          Color.fromARGB(255, 255, 217, 197),
+                          Color.fromARGB(255, 236, 208, 255),
+                          Color.fromARGB(255, 195, 254, 244),
+                          Color.fromARGB(255, 255, 171, 171),
+                          Color.fromARGB(255, 214, 199, 230),
+                          Color.fromARGB(255, 224, 224, 224),
+                        ];
+                        Color imageColor = imageBackgroundColors[index % imageBackgroundColors.length];
+                        return PetCard(pet: pet, imageBackgroundColor: imageColor);
+                      },
+                    ),
+                  ),
                 ),
-                itemCount: _filteredFavoritePets().length,
-                itemBuilder: (context, index) {
-                  Pet pet = _filteredFavoritePets()[index];
-                  List<Color> imageBackgroundColors = [
-                    Color(0xFFD7F4DD),
-                    Color(0xFFFFF3D3),
-                    Color(0xFFFFD9C5),
-                    Color(0xFFD0EFFF),
-                  ];
-                  Color imageColor = imageBackgroundColors[index % imageBackgroundColors.length];
-                  return PetCard(pet: pet, imageBackgroundColor: imageColor);
-                },
-              ),
-            ),
-          ),
         ],
       ),
       bottomNavigationBar: BottomNavigation(),
     );
-  }
-
-  List<Pet> _filteredFavoritePets() {
-    return petService.getFavoritePets();
   }
 }

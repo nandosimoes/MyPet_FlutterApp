@@ -18,14 +18,15 @@ class BottomNavigation extends StatelessWidget {
           icon: Icon(Icons.favorite),
           label: 'Favoritos',
         ),
+                BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Perfil',
+        ),
         BottomNavigationBarItem(
           icon: Icon(Icons.add_circle_outline),
           label: 'Adicionar',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Perfil',
-        ),
+
       ],
       onTap: (index) {
         switch (index) {
@@ -44,13 +45,13 @@ class BottomNavigation extends StatelessWidget {
             case 2:
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => AddPetScreen())
+              MaterialPageRoute(builder: (context) => ProfileScreen())
             );
              break;
             case 3:
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => ProfileScreen())
+              MaterialPageRoute(builder: (context) => AddPetScreen())
             );
         }
       },

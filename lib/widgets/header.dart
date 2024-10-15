@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
   final String location;
+  final Function(String) onAnimalTypeSelected;
 
-  Header({required this.location});
+  Header({required this.location, required this.onAnimalTypeSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class Header extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildAnimalIcon(Icons.pets, 'Todos', 'Todos'), 
+              _buildAnimalIcon(Icons.pets, 'Todos', 'Todos'),
               _buildAnimalIcon(Icons.pets, 'Gatos', 'Gato'),
               _buildAnimalIcon(Icons.pets, 'Cães', 'Cão'),
               _buildAnimalIcon(Icons.pets, 'Aves', 'Ave'),
@@ -50,7 +51,7 @@ class Header extends StatelessWidget {
   Widget _buildAnimalIcon(IconData icon, String label, String animalType) {
     return GestureDetector(
       onTap: () {
-        // Aqui você pode definir a lógica de filtro, se necessário
+        onAnimalTypeSelected(animalType);  // Chama o callback ao selecionar um animal
       },
       child: Column(
         children: [

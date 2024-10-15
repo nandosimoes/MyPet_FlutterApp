@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_pet_app/screens/favorites_screen.dart';
 import 'package:my_pet_app/screens/home_screen.dart'; // Ajuste o caminho conforme necessário
 import 'package:my_pet_app/screens/add_pet_screen.dart';
+import 'package:my_pet_app/screens/settings_screen.dart';
 import 'package:my_pet_app/widgets/bottom_navigation.dart'; // Ajuste o caminho conforme necessário
 
 class ProfileScreen extends StatelessWidget {
@@ -92,6 +93,21 @@ class ProfileScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => FavoriteScreen()),
+                    );
+                  },
+                ),
+                
+              ),
+               Card(
+                elevation: 4,
+                margin: EdgeInsets.symmetric(vertical: 10),
+                child: ListTile(
+                  leading: Icon(Icons.settings, color: Colors.blue[900]),
+                  title: Text('Configurações'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SettingsScreen()),
                     );
                   },
                 ),

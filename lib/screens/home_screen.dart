@@ -51,7 +51,14 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-          Header(location: 'Embu das Artes'), // Usando o Header aqui
+          Header(
+            location: 'Embu das Artes',
+            onAnimalTypeSelected: (String animalType) {
+              setState(() {
+                selectedAnimalType = animalType;  // Atualiza o tipo de animal
+              });
+            },
+          ), // Usando o Header aqui
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -66,16 +73,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (context, index) {
                   Pet pet = _filteredPets()[index];
                   List<Color> imageBackgroundColors = [
-                    Color(0xFFFFC1C1), 
-                    Color(0xFFD7F4DD),
-                    Color(0xFFB3E5FC), 
-                    Color(0xFFFFF3D3), 
-                    Color(0xFFFFD9C5),
-                    Color.fromARGB(255, 236, 208, 255), 
+                    Color.fromARGB(255, 255, 193, 193),
+                    Color.fromARGB(255, 215, 244, 221),
+                    Color.fromARGB(255, 179, 229, 252),
+                    Color.fromARGB(255, 255, 243, 211),
+                    Color.fromARGB(255, 255, 217, 197),
+                    Color.fromARGB(255, 236, 208, 255),
                     Color.fromARGB(255, 195, 254, 244),
-                    Color(0xFFFFABAB),
-                    Color(0xFFD6C7E6), 
-                    Color(0xFFE0E0E0), 
+                    Color.fromARGB(255, 255, 171, 171),
+                    Color.fromARGB(255, 214, 199, 230),
+                    Color.fromARGB(255, 224, 224, 224),
                   ];
                   Color imageColor = imageBackgroundColors[
                       index % imageBackgroundColors.length];

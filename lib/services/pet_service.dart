@@ -12,12 +12,12 @@ class PetService {
       description: data['description'],
       weight: data['weight'],
       imagePath: data['imagePath'],
-      hasVaccines: data['hasVaccines'], 
+      hasVaccines: data['hasVaccines'],
       favorite: data['favorite'],       
     )).toList();
   }
 
   List<Pet> getFavoritePets() {
-    return getPets().where((pet) => pet.favorite).toList();
+    return getPets().where((pet) => pet.favorite == true).toList();
   }
 }
