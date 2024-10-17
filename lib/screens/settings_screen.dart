@@ -14,7 +14,6 @@ class SettingsScreen extends StatelessWidget {
             trailing: Switch(
               value: true,
               onChanged: (bool value) {
-                // Implement notification toggle
               },
             ),
           ),
@@ -23,7 +22,6 @@ class SettingsScreen extends StatelessWidget {
             trailing: Switch(
               value: false,
               onChanged: (bool value) {
-                // Implement dark theme toggle
               },
             ),
           ),
@@ -39,7 +37,6 @@ class SettingsScreen extends StatelessWidget {
                 );
               }).toList(),
               onChanged: (String? newValue) {
-                // Implement language change
               },
             ),
           ),

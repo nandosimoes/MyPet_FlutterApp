@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/pet_card.dart';
 import '../widgets/bottom_navigation.dart';
-import '../widgets/header.dart'; // Importando o Header
+import '../widgets/header.dart';
 import '../models/pet.dart';
 import '../services/pet_service.dart';
 
@@ -22,7 +22,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
 
   void _loadFavoritePets() {
     setState(() {
-      // Carrega os pets favoritos filtrando pela propriedade 'favorite'
       favoritePets = petService.getFavoritePets();
     });
   }
@@ -62,9 +61,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
       ),
       body: Column(
         children: [
-          Header(location: 'Embu das Artes', onAnimalTypeSelected: (_) {}), // Header aqui, sem filtro
+          Header(location: 'Embu das Artes', onAnimalTypeSelected: (_) {}),
           favoritePets.isEmpty
-              ? Center(child: Text('Nenhum pet favorito encontrado')) // Exibe se não houver favoritos
+              ? Center(child: Text('Nenhum pet favorito encontrado'))
               : Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),

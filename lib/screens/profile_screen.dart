@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_pet_app/screens/favorites_screen.dart';
-import 'package:my_pet_app/screens/home_screen.dart'; // Ajuste o caminho conforme necessário
+import 'package:my_pet_app/screens/home_screen.dart'; 
 import 'package:my_pet_app/screens/add_pet_screen.dart';
 import 'package:my_pet_app/screens/settings_screen.dart';
-import 'package:my_pet_app/widgets/bottom_navigation.dart'; // Ajuste o caminho conforme necessário
+import 'package:my_pet_app/widgets/bottom_navigation.dart'; 
 
 class ProfileScreen extends StatelessWidget {
   @override

@@ -55,10 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
             location: 'Embu das Artes',
             onAnimalTypeSelected: (String animalType) {
               setState(() {
-                selectedAnimalType = animalType;  // Atualiza o tipo de animal
+                selectedAnimalType = animalType;  
               });
             },
-          ), // Usando o Header aqui
+          ), 
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16.0),

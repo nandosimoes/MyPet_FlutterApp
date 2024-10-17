@@ -11,7 +11,7 @@ class PetDetailsScreen extends StatefulWidget {
 }
 
 class _PetDetailsScreenState extends State<PetDetailsScreen> {
-  bool isFavorited = false; // Variável para rastrear o estado do favorito
+  bool isFavorited = false; 
 
   @override
   Widget build(BuildContext context) {
@@ -78,13 +78,13 @@ class _PetDetailsScreenState extends State<PetDetailsScreen> {
                           IconButton(
                             icon: Icon(
                               isFavorited
-                                  ? Icons.favorite // Ícone preenchido
-                                  : Icons.favorite_border, // Ícone de borda
+                                  ? Icons.favorite 
+                                  : Icons.favorite_border, 
                               color: isFavorited ? Colors.red : Colors.amber,
                             ),
                             onPressed: () {
                               setState(() {
-                                isFavorited = !isFavorited; // Altera o estado
+                                isFavorited = !isFavorited;
                               });
                             },
                           ),

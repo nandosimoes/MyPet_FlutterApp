@@ -227,7 +227,6 @@ class _AddPetScreenState extends State<AddPetScreen> {
                       child: ElevatedButton(
                         child: Text('Adicionar Foto'),
                         onPressed: () {
-                          // Implementar lógica de adicionar foto
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.grey[200],
@@ -244,7 +243,6 @@ class _AddPetScreenState extends State<AddPetScreen> {
                       child: ElevatedButton(
                         child: Text('Salvar'),
                         onPressed: () {
-                          // Implementar lógica de salvar
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(255, 76, 127, 175),
@@ -263,7 +261,7 @@ class _AddPetScreenState extends State<AddPetScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigation(), // Adicionando a barra de navegação aqui
+      bottomNavigationBar: BottomNavigation(), 
     );
   }
 }
